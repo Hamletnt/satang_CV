@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.profile-card {
+    text-align: center;
+}
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+.profile-pic {
+    width: 100%;
+    border-radius: 10px;
+}
+.username {
+    font-size: 24px;
+    margin: 10px 0;
+}
+.description, .location {
+    font-size: 14px;
+    color: #777;
+}
+.social-icons i{
+    width: 24px;
+}
+.contact-btn {
+    background: rgb(240, 132, 213);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}

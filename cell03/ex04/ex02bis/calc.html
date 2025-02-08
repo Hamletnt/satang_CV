@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 350px;
+            background-color: bisque;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="leftOperand" placeholder="Enter number" min="0">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="number" id="rightOperand" placeholder="Enter number" min="0">
+        <button id="calculateBtn">Try me!</button>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#calculateBtn").on("click", function() {
+                let left = $("#leftOperand").val();
+                let right = $("#rightOperand").val();
+                let operator = $("#operator").val();
+
+                // ตรวจสอบว่าเป็นตัวเลขและเป็นจำนวนเต็มบวก
+                if (!/^\d+$/.test(left) || !/^\d+$/.test(right)) {
+                    alert("Error :(");
+                    return;
+                }
+
+                left = parseInt(left);
+                right = parseInt(right);
+
+                if ((operator === "/" || operator === "%") && right === 0) {
+                    alert("It’s over 9000!");
+                    console.log("It’s over 9000!");
+                    return;
+                }
+
+                let result;
+                switch (operator) {
+                    case "+": result = left + right; break;
+                    case "-": result = left - right; break;
+                    case "*": result = left * right; break;
+                    case "/": result = left / right; break;
+                    case "%": result = left % right; break;
+                    default:
+                        alert("Invalid operation!");
+                        return;
+                }
+
+                // Check result is int.
+                if (!Number.isInteger(result)) {
+                    alert("Error :(");
+                    return;
+                }
+
+                alert("Result: " + result);
+                console.log("Result: " + result);
+            });
+
+            // แสดงแจ้งเตือนทุก 30 วินาที
+            setInterval(function() {
+                alert("Please, use me...");
+            }, 30000);
+        });
+    </script>
+</body>
+</html>
